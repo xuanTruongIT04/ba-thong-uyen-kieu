@@ -22,6 +22,7 @@ export const shopLinks: NavItem[] = [
   { name: "Chăm sóc da", href: "/cham-soc-da" },
   { name: "Chăm sóc cá nhân", href: "/cham-soc-ca-nhan" },
   { name: "Sức khỏe", href: "/suc-khoe" },
+  { name: "Mỹ phẩm", href: "/my-pham" },
 ]
 
 export const mobileMenuSections: NavSection[] = [

@@ -39,6 +39,15 @@ export const categories: Category[] = [
     image: { url: "/images/products/men-vi-sinh-duong-phuc-nhan.jpg", alt: "Sức khỏe" },
     order: 3,
   },
+  {
+    id: "cat-4",
+    name: "Mỹ phẩm",
+    slug: "my-pham",
+    description:
+      "Bộ sản phẩm đặc trị chuyên sâu từ thảo dược — xoá nám, dưỡng trắng và tái tạo làn da rạng rỡ, đều màu.",
+    image: { url: "/images/products/tan-ngoc-nhan.jpg", alt: "Mỹ phẩm" },
+    order: 4,
+  },
 ]
 
 export const brands: Brand[] = [
@@ -335,6 +344,20 @@ export const products: Product[] = [
     tags: ["serum", "trị mụn", "chăm sóc da"],
     rating: 4.6,
     reviewCount: 87,
+  }),
+  product({
+    id: "prod-19",
+    name: "Tán Ngọc Nhan",
+    slug: "tan-ngoc-nhan",
+    description:
+      "Bảo bối cho làn da không nám sạm — bộ đặc trị Tán Ngọc Nhan giúp xoá nám, sáng da, đều màu và tái tạo làn da rạng rỡ từ tinh chất thảo dược quý.",
+    body: "<h2>Bảo bối cho làn da không nám sạm</h2><p>Bộ sản phẩm Tán Ngọc Nhan là giải pháp đặc trị chuyên sâu, hỗ trợ xoá nám, làm sáng và đều màu da từ tinh chất thảo dược quý. Kiên trì sử dụng giúp làn da phục hồi rạng rỡ, mịn màng từ bên trong.</p><ul><li>Hỗ trợ làm mờ nám, tàn nhang, đốm sạm</li><li>Dưỡng trắng, đều màu da tự nhiên</li><li>Chiết xuất thảo dược lành tính, phù hợp mọi loại da</li></ul>",
+    price: 3490000,
+    categoryIds: ["cat-4"],
+    tags: ["mỹ phẩm", "xoá nám", "dưỡng trắng", "thảo dược"],
+    rating: 4.9,
+    reviewCount: 58,
+    featured: true,
   }),
 ]
 
