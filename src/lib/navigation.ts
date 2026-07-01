@@ -8,34 +8,23 @@ export interface NavSection {
   items: NavItem[]
 }
 
-// Single source of truth for all navigation across desktop header,
-// mobile menu, and anywhere else. Edit this one file to update all menus.
+// Nguồn dữ liệu duy nhất cho toàn bộ điều hướng (header desktop, menu mobile, footer).
+// Phase 1 (MVP) chỉ giữ 5 trang chính.
+
+export const mainLinks: NavItem[] = [
+  { name: "Trang chủ", href: "/" },
+  { name: "Sản phẩm", href: "/shop" },
+  { name: "Giới thiệu", href: "/about" },
+  { name: "Liên hệ", href: "/contact" },
+]
 
 export const shopLinks: NavItem[] = [
-  { name: "Electronics", href: "/electronics" },
-  { name: "Clothing", href: "/clothing" },
-  { name: "Home & Kitchen", href: "/home-kitchen" },
-  { name: "Accessories", href: "/accessories" },
-  { name: "Food & Drink", href: "/food-drink" },
-]
-
-export const accountLinks: NavItem[] = [
-  { name: "My Account", href: "/account" },
-  { name: "Wishlist", href: "/wishlist" },
-  { name: "Orders", href: "/account/orders" },
-]
-
-export const infoLinks: NavItem[] = [
-  { name: "All Brands", href: "/brands" },
-  { name: "Blog", href: "/blog" },
-  { name: "Pages", href: "/pages" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-  { name: "FAQ", href: "/faq" },
+  { name: "Chăm sóc da", href: "/cham-soc-da" },
+  { name: "Chăm sóc cá nhân", href: "/cham-soc-ca-nhan" },
+  { name: "Sức khỏe", href: "/suc-khoe" },
 ]
 
 export const mobileMenuSections: NavSection[] = [
-  { label: "Shop", items: shopLinks },
-  { label: "Account", items: accountLinks },
-  { label: "Info", items: infoLinks },
+  { label: "Menu", items: mainLinks },
+  { label: "Danh mục", items: shopLinks },
 ]

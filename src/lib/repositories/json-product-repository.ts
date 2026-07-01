@@ -6,7 +6,7 @@ import type {
   PaginationParams,
   PaginatedResult,
 } from "@/types"
-import data from "@/data/products.json"
+import data from "@/data/products"
 
 const products = data.products as Product[]
 

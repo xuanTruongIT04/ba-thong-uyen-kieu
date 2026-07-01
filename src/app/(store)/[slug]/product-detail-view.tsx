@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ShoppingBag, Heart } from "lucide-react"
-import { toast } from "sonner"
-import { useCartStore } from "@/store/cart"
-import { useWishlistStore } from "@/store/wishlist"
+import { Phone } from "lucide-react"
 import { useRecentlyViewedStore } from "@/store/recently-viewed"
 import { RecentlyViewed } from "@/components/products/recently-viewed"
 import { StarRating } from "@/components/products/star-rating"
@@ -23,9 +20,9 @@ import {
 } from "@/components/ui/breadcrumb"
 import { ProductGallery } from "@/components/products/product-gallery"
 import { VariantSelector } from "@/components/products/variant-selector"
-import { QuantitySelector } from "@/components/products/quantity-selector"
 import { ProductGrid } from "@/components/products/product-grid"
 import { formatPrice } from "@/lib/utils"
+import { siteConfig } from "@/lib/config"
 import { breadcrumbJsonLd } from "@/lib/structured-data"
 import type { Product, Brand, Category } from "@/types"
 
@@ -45,19 +42,8 @@ export function ProductDetailView({
   const [selectedVariantId, setSelectedVariantId] = useState(
     product.variants[0]?.id ?? ""
   )
-  const [quantity, setQuantity] = useState(1)
-
-  const addToCart = useCartStore((s) => s.addItem)
-  const openCart = useCartStore((s) => s.openCart)
-  const wishlistItems = useWishlistStore((s) => s.items)
-  const addToWishlist = useWishlistStore((s) => s.addItem)
-  const removeFromWishlist = useWishlistStore((s) => s.removeItem)
 
   const addRecentlyViewed = useRecentlyViewedStore((s) => s.addItem)
-
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  const isWishlisted = mounted && wishlistItems.some((i) => i.productId === product.id)
 
   // Track recently viewed
   useEffect(() => {
@@ -83,38 +69,8 @@ export function ProductDetailView({
     selectedVariant.inventory.quantity > 0 ||
     selectedVariant.inventory.allowBackorder
 
-  function handleAddToCart() {
-    addToCart({
-      variantId: selectedVariant!.id,
-      productId: product.id,
-      name: product.name,
-      variantName: selectedVariant!.name,
-      image: product.images[0] ?? { url: "", alt: product.name },
-      slug: product.slug,
-      price: selectedVariant!.price,
-      quantity,
-    })
-    openCart()
-  }
-
-  function handleToggleWishlist() {
-    if (isWishlisted) {
-      removeFromWishlist(product.id)
-      toast("Removed from wishlist")
-    } else {
-      addToWishlist({
-        productId: product.id,
-        name: product.name,
-        slug: product.slug,
-        price: selectedVariant!.price,
-        image: product.images[0] ?? { url: "", alt: product.name },
-      })
-      toast.success("Added to wishlist")
-    }
-  }
-
   const breadcrumbLd = breadcrumbJsonLd([
-    { name: "Shop", href: "/shop" },
+    { name: "Sản phẩm", href: "/shop" },
     ...categoryAncestors.map((c) => ({ name: c.name, href: `/${c.slug}` })),
     { name: product.name, href: `/${product.slug}` },
   ])
@@ -134,7 +90,7 @@ export function ProductDetailView({
     },
     offers: {
       "@type": "Offer",
-      price: (selectedVariant.price / 100).toFixed(2),
+      price: String(selectedVariant.price),
       priceCurrency: selectedVariant.currency,
       availability: inStock
         ? "https://schema.org/InStock"
@@ -152,7 +108,7 @@ export function ProductDetailView({
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/shop" />}>Shop</BreadcrumbLink>
+            <BreadcrumbLink render={<Link href="/shop" />}>Sản phẩm</BreadcrumbLink>
           </BreadcrumbItem>
           {categoryAncestors.map((cat, idx) => {
             const isLast = idx === categoryAncestors.length - 1
@@ -236,37 +192,24 @@ export function ProductDetailView({
             </div>
           )}
 
-          {/* Quantity + Add to Cart */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-            <div className="flex items-center gap-4">
-              <QuantitySelector
-                quantity={quantity}
-                onQuantityChange={setQuantity}
-                max={selectedVariant.inventory.quantity || 99}
-              />
-              <Button
-                variant="outline"
-                size="icon"
-                aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-                onClick={handleToggleWishlist}
-              >
-                <Heart className={`h-4 w-4 ${isWishlisted ? "fill-wishlist text-wishlist" : ""}`} />
-              </Button>
-            </div>
-            <Button
-              size="lg"
-              className="w-full sm:flex-1"
-              disabled={!inStock}
-              onClick={handleAddToCart}
-            >
-              <ShoppingBag className="mr-2 h-4 w-4" />
-              {inStock ? "Add to Cart" : "Out of Stock"}
+          {/* CTA đặt hàng (Phase 1 — chưa có giỏ hàng/thanh toán online) */}
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button size="lg" className="w-full sm:flex-1" disabled={!inStock} asChild>
+              <Link href="/contact">
+                {inStock ? "Liên hệ đặt hàng" : "Tạm hết hàng"}
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+              <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}>
+                <Phone className="mr-2 h-4 w-4" />
+                {siteConfig.contact.phone}
+              </a>
             </Button>
           </div>
 
           {!inStock && (
             <p className="mt-2 text-sm text-destructive">
-              This item is currently out of stock.
+              Sản phẩm hiện đang tạm hết hàng.
             </p>
           )}
 
@@ -292,7 +235,7 @@ export function ProductDetailView({
       {relatedProducts.length > 0 && (
         <section className="mt-16">
           <h2 className="text-xl font-bold tracking-tight">
-            You may also like
+            Có thể bạn cũng thích
           </h2>
           <div className="mt-6">
             <ProductGrid products={relatedProducts} />

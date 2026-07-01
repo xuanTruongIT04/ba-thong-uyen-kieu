@@ -1,5 +1,5 @@
 import type { Brand } from "@/types"
-import data from "@/data/products.json"
+import data from "@/data/products"
 
 const brands = (data as { brands: Brand[] }).brands
 

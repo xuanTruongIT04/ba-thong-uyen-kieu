@@ -7,7 +7,7 @@ import { EmptyState } from "@/components/ui/empty-state"
 import { ProductCard } from "@/components/products/product-card"
 import { useWishlistStore } from "@/store/wishlist"
 import type { Product } from "@/types"
-import data from "@/data/products.json"
+import data from "@/data/products"
 
 const allProducts = data.products as Product[]
 

@@ -6,7 +6,7 @@ import { CategoryView } from "./category-view"
 import { BrandView } from "./brand-view"
 import { formatPrice } from "@/lib/utils"
 import { siteConfig } from "@/lib/config"
-import data from "@/data/products.json"
+import data from "@/data/products"
 
 interface SlugPageProps {
   params: Promise<{ slug: string }>

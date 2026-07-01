@@ -6,20 +6,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// Giá được lưu trực tiếp bằng VND (không dùng đơn vị cents).
 export function formatPrice(
-  priceInCents: number,
+  price: number,
   currency?: string
 ): string {
   return new Intl.NumberFormat(siteConfig.locale, {
     style: "currency",
     currency: currency ?? siteConfig.currency,
-  }).format(priceInCents / 100)
+    maximumFractionDigits: 0,
+  }).format(price)
 }
 
 export function formatDate(date: string | Date): string {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
+  return new Intl.DateTimeFormat("vi-VN", {
     day: "numeric",
+    month: "numeric",
     year: "numeric",
   }).format(new Date(date))
 }

@@ -1,52 +1,59 @@
 // ============================================================================
-// Store Configuration — Single source of truth for all store-wide settings.
-// Edit this file to customize the store name, contact info, social links, etc.
+// Cấu hình cửa hàng — nguồn dữ liệu duy nhất cho toàn bộ thiết lập site.
+// Sửa file này để đổi tên thương hiệu, thông tin liên hệ, mạng xã hội, v.v.
 // ============================================================================
 
 export const siteConfig = {
-  // Branding
-  name: "Next.js Ecommerce Starter",
-  tagline: "A free, open-source Next.js ecommerce template.",
+  // Thương hiệu
+  name: "Thảo Dược Bà Thông",
+  tagline: "Thảo dược đến từ Đất Việt",
   description:
-    "A free, production-ready Next.js ecommerce starter template built with Tailwind CSS and shadcn/ui. Responsive, accessible, SEO optimized, and ready to connect to any checkout system. Built by Epic Design Labs.",
+    "Thảo Dược Bà Thông — thương hiệu chăm sóc sức khỏe và sắc đẹp từ thảo dược thiên nhiên Việt Nam. Sản phẩm an toàn, lành tính, kế thừa tinh hoa y học cổ truyền.",
 
-  // Announcement bar (set to "" to hide)
-  announcement: "Free shipping on all orders over $75 — Shop now!",
+  // Chủ sở hữu
+  owner: {
+    name: "Uyên Kiều",
+    title: "Giám đốc",
+  },
 
-  // URLs
+  // Thanh thông báo trên cùng (để "" nếu muốn ẩn)
+  announcement: "Miễn phí giao hàng cho đơn từ 500.000₫ — Đặt hàng ngay!",
+
+  // URL
   url: process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000",
 
-  // Contact
+  // Liên hệ
   contact: {
-    email: "support@epicdesignlabs.com",
-    phone: "",
+    email: "lienhe@bathong.vn",
+    phone: "1900 1234",
+    zalo: "0900000000",
     address: {
       street: "",
       suite: "",
-      city: "",
+      city: "TP. Hồ Chí Minh",
       state: "",
       zip: "",
     },
   },
 
-  // Social links (set to "" to hide)
+  // Mạng xã hội (để "" nếu muốn ẩn)
   social: {
-    twitter: "https://x.com/epicdesignlabs",
-    instagram: "https://instagram.com/epicdesignlabs",
-    facebook: "https://facebook.com/epicdesignlabs",
+    facebook: "https://facebook.com/thaoduocbathong",
+    instagram: "",
     youtube: "",
     tiktok: "",
+    twitter: "",
   },
 
-  // Shipping
-  freeShippingThreshold: 7500, // in cents ($75.00)
-  taxRate: 0.08, // 8%
+  // Giao hàng
+  freeShippingThreshold: 500000, // VND
+  taxRate: 0,
 
-  // Currency & locale
-  currency: "USD",
-  locale: "en-US",
+  // Tiền tệ & ngôn ngữ
+  currency: "VND",
+  locale: "vi-VN",
 
-  // Legal
+  // Pháp lý
   copyrightYear: new Date().getFullYear(),
 } as const
 

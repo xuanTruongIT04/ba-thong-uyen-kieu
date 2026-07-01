@@ -1,15 +1,9 @@
-"use client"
-
-import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Heart } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { StarRating } from "@/components/products/star-rating"
 import { formatPrice } from "@/lib/utils"
 import { PLACEHOLDER_IMAGE } from "@/lib/constants"
-import { useWishlistStore } from "@/store/wishlist"
-import { toast } from "sonner"
 import type { Product } from "@/types"
 
 interface ProductCardProps {
@@ -24,32 +18,6 @@ export function ProductCard({ product }: ProductCardProps) {
   const compareAtPrice = defaultVariant.compareAtPrice
   const isOnSale = compareAtPrice && compareAtPrice > price
   const image = product.images[0]
-
-  const wishlistItems = useWishlistStore((s) => s.items)
-  const addItem = useWishlistStore((s) => s.addItem)
-  const removeItem = useWishlistStore((s) => s.removeItem)
-
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  const isWishlisted = mounted && wishlistItems.some((i) => i.productId === product.id)
-
-  function handleWishlist(e: React.MouseEvent) {
-    e.preventDefault()
-    e.stopPropagation()
-    if (isWishlisted) {
-      removeItem(product.id)
-      toast("Removed from wishlist")
-    } else {
-      addItem({
-        productId: product.id,
-        name: product.name,
-        slug: product.slug,
-        price,
-        image: image ?? { url: PLACEHOLDER_IMAGE, alt: product.name },
-      })
-      toast.success("Added to wishlist")
-    }
-  }
 
   return (
     <Link href={`/${product.slug}`} className="group">
@@ -66,18 +34,9 @@ export function ProductCard({ product }: ProductCardProps) {
             variant="secondary"
             className="absolute top-3 left-3 bg-white text-xs"
           >
-            Sale
+            Giảm giá
           </Badge>
         )}
-        <button
-          onClick={handleWishlist}
-          className="absolute top-2 right-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm transition-opacity hover:bg-neutral-50 sm:opacity-0 sm:group-hover:opacity-100"
-          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-        >
-          <Heart
-            className={`h-4 w-4 ${isWishlisted ? "fill-current text-wishlist" : "text-neutral-600"}`}
-          />
-        </button>
       </div>
       <div className="mt-3">
         <StarRating rating={product.rating} reviewCount={product.reviewCount} size="sm" />
@@ -96,7 +55,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         {product.variants.length > 1 && (
           <p className="mt-1 text-xs text-muted-foreground">
-            {product.variants.length} options
+            {product.variants.length} tùy chọn
           </p>
         )}
       </div>
