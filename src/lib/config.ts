@@ -29,13 +29,13 @@ export const siteConfig = {
 
   // Liên hệ
   contact: {
-    email: "lienhe@bathong.vn",
+    email: "kieuuyenori1984@gmail.com",
     phone: "0978 019 296",
     zalo: "0978019296",
     address: {
       street: "",
       suite: "",
-      city: "TP. Hồ Chí Minh",
+      city: "TP. Thái Nguyên",
       state: "",
       zip: "",
     },
@@ -43,7 +43,7 @@ export const siteConfig = {
 
   // Mạng xã hội (để "" nếu muốn ẩn)
   social: {
-    facebook: "https://facebook.com/thaoduocbathong",
+    facebook: "https://www.facebook.com/CEOKieuUyen",
     instagram: "",
     youtube: "",
     tiktok: "",
