@@ -6,21 +6,15 @@ import {
   brandRepository,
 } from "@/lib/repositories"
 
-// Static public routes. Admin, account, auth, and checkout are excluded
-// (covered by robots.txt disallow rules).
+// Static public routes — chỉ 5 trang thuộc scope Phase 1. Các route khác
+// (cart/checkout/auth/account/admin/wishlist/blog/brands/policies/faq) vẫn còn
+// code nhưng đang ẩn khỏi điều hướng và chưa Việt hóa — không đưa vào sitemap
+// để tránh bị công cụ tìm kiếm index nội dung chưa hoàn thiện.
 const STATIC_PATHS = [
   { path: "", priority: 1, changeFrequency: "daily" as const },
   { path: "/shop", priority: 0.9, changeFrequency: "daily" as const },
-  { path: "/brands", priority: 0.7, changeFrequency: "weekly" as const },
-  { path: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
-  { path: "/pages", priority: 0.5, changeFrequency: "monthly" as const },
   { path: "/about", priority: 0.6, changeFrequency: "monthly" as const },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly" as const },
-  { path: "/faq", priority: 0.5, changeFrequency: "monthly" as const },
-  { path: "/policies/shipping", priority: 0.3, changeFrequency: "yearly" as const },
-  { path: "/policies/returns", priority: 0.3, changeFrequency: "yearly" as const },
-  { path: "/policies/privacy", priority: 0.3, changeFrequency: "yearly" as const },
-  { path: "/policies/terms", priority: 0.3, changeFrequency: "yearly" as const },
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
