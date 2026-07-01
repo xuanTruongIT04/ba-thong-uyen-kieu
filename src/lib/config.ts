@@ -18,7 +18,7 @@ export const siteConfig = {
       "Tôi tin mỗi người phụ nữ Việt đều xứng đáng được chăm sóc bằng những gì tự nhiên và an toàn nhất — đó là lý do Bà Thông ra đời.",
     bio: "Với tâm huyết gìn giữ và phát triển tinh hoa y học cổ truyền, Giám đốc Uyên Kiều trực tiếp đồng hành cùng đội ngũ Bà Thông trong từng công đoạn, từ chọn lọc dược liệu đến hoàn thiện sản phẩm.",
     // Ảnh chân dung thật — cập nhật khi có. Để trống thì site hiển thị avatar chữ cái đầu.
-    photo: "",
+    photo: "/images/user/anh-giam-doc.jpg",
   },
 
   // Thanh thông báo trên cùng (để "" nếu muốn ẩn)
@@ -30,8 +30,8 @@ export const siteConfig = {
   // Liên hệ
   contact: {
     email: "lienhe@bathong.vn",
-    phone: "1900 1234",
-    zalo: "0900000000",
+    phone: "0978 019 296",
+    zalo: "0978019296",
     address: {
       street: "",
       suite: "",

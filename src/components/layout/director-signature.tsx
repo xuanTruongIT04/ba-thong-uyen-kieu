@@ -21,13 +21,13 @@ export function DirectorSignature() {
       />
       <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8">
         {owner.photo ? (
-          <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full border-2 border-card shadow-sm">
+          <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border-4 border-card shadow-md sm:h-32 sm:w-32">
             <Image
               src={owner.photo}
               alt={owner.name}
               fill
               className="object-cover"
-              sizes="80px"
+              sizes="(max-width: 640px) 112px, 128px"
             />
           </div>
         ) : (
