@@ -97,7 +97,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       {/* Modal */}
       <div ref={modalRef} className="relative mx-auto mt-[10vh] w-full max-w-2xl px-4" role="dialog" aria-modal="true" aria-label="Tìm sản phẩm">
-        <div className="overflow-hidden rounded-xl bg-white shadow-2xl">
+        <div className="overflow-hidden rounded-xl bg-card shadow-2xl">
           {/* Input */}
           <div className="flex items-center border-b px-4">
             <Search className="h-5 w-5 shrink-0 text-muted-foreground" />
@@ -119,7 +119,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 <X className="h-4 w-4" />
               </button>
             ) : (
-              <kbd className="hidden rounded border bg-neutral-100 px-1.5 py-0.5 text-xs text-muted-foreground sm:inline">
+              <kbd className="hidden rounded border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground sm:inline">
                 ESC
               </kbd>
             )}
@@ -136,9 +136,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       key={product.id}
                       href={`/${product.slug}`}
                       onClick={handleClose}
-                      className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-neutral-50"
+                      className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-muted"
                     >
-                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md bg-neutral-100">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md bg-muted">
                         <Image
                           src={product.images[0]?.url ?? PLACEHOLDER_IMAGE}
                           alt={product.images[0]?.alt ?? product.name}
@@ -166,7 +166,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 <Link
                   href={`/search?q=${encodeURIComponent(query)}`}
                   onClick={handleClose}
-                  className="mt-1 flex items-center justify-center gap-2 rounded-lg p-3 text-sm text-muted-foreground transition-colors hover:bg-neutral-50 hover:text-foreground"
+                  className="mt-1 flex items-center justify-center gap-2 rounded-lg p-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 >
                   Xem tất cả kết quả
                   <ArrowRight className="h-3 w-3" />
@@ -192,7 +192,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="rounded-full border border-border px-3 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-neutral-50"
+                      className="rounded-full border border-border px-3 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-muted"
                     >
                       {term}
                     </button>

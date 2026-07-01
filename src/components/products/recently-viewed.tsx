@@ -31,7 +31,7 @@ export function RecentlyViewed({ excludeProductId }: RecentlyViewedProps) {
             href={`/${item.slug}`}
             className="group shrink-0"
           >
-            <div className="relative h-32 w-32 overflow-hidden rounded-lg bg-neutral-100">
+            <div className="relative h-32 w-32 overflow-hidden rounded-lg bg-muted">
               <Image
                 src={item.imageUrl || PLACEHOLDER_IMAGE}
                 alt={item.imageAlt || item.name}

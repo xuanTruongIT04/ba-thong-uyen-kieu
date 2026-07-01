@@ -37,7 +37,7 @@ export function SortDropdown({ currentSort }: SortDropdownProps) {
         value={currentSort}
         onChange={handleChange}
         aria-label="Sắp xếp theo"
-        className="appearance-none rounded-md border border-border bg-white py-2 pl-3 pr-8 text-sm text-foreground outline-none focus:border-foreground focus:ring-1 focus:ring-foreground"
+        className="appearance-none rounded-md border border-border bg-card py-2 pl-3 pr-8 text-sm text-foreground outline-none focus:border-foreground focus:ring-1 focus:ring-foreground"
       >
         {sortOptions.map((option) => (
           <option key={option.value} value={option.value}>

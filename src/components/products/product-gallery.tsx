@@ -18,7 +18,7 @@ export function ProductGallery({ images, productName = "Product" }: ProductGalle
   return (
     <div className="flex flex-col gap-4">
       {/* Main image */}
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-neutral-100">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
         <Image
           src={currentImage?.url ?? PLACEHOLDER_IMAGE}
           alt={currentImage?.alt ?? productName}
@@ -37,10 +37,10 @@ export function ProductGallery({ images, productName = "Product" }: ProductGalle
               key={index}
               onClick={() => setSelectedIndex(index)}
               className={cn(
-                "relative h-16 w-16 overflow-hidden rounded-md border-2 bg-neutral-100 transition-colors",
+                "relative h-16 w-16 overflow-hidden rounded-md border-2 bg-muted transition-colors",
                 selectedIndex === index
                   ? "border-foreground"
-                  : "border-transparent hover:border-neutral-300"
+                  : "border-transparent hover:border-border"
               )}
               aria-label={`View image ${index + 1}`}
             >

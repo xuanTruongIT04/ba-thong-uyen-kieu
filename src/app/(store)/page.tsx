@@ -46,7 +46,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative flex h-[560px] items-center justify-center bg-neutral-50">
+      <section className="relative flex h-[560px] items-center justify-center bg-muted">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-muted-foreground">
             {siteConfig.tagline}
@@ -72,11 +72,11 @@ export default async function HomePage() {
       </section>
 
       {/* Giá trị thương hiệu */}
-      <section className="border-b bg-white">
+      <section className="border-b bg-card">
         <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
           {values.map((v) => (
             <div key={v.title} className="flex items-start gap-4">
-              <div className="rounded-lg bg-neutral-100 p-3">
+              <div className="rounded-lg bg-muted p-3">
                 <v.icon className="h-6 w-6" />
               </div>
               <div>
@@ -102,7 +102,7 @@ export default async function HomePage() {
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((category) => (
             <Link key={category.id} href={`/${category.slug}`} className="group">
-              <div className="relative aspect-square overflow-hidden rounded-lg bg-neutral-100">
+              <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
                 <Image
                   src={category.image?.url ?? PLACEHOLDER_IMAGE}
                   alt={category.image?.alt ?? category.name}
@@ -138,12 +138,12 @@ export default async function HomePage() {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-neutral-900 text-white">
+      <section className="bg-foreground text-background">
         <div className="mx-auto flex max-w-[1440px] flex-col items-center px-4 py-16 text-center sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             Đăng ký nhận tin
           </h2>
-          <p className="mt-4 text-neutral-400">
+          <p className="mt-4 text-background/70">
             Nhận thông tin sản phẩm mới và ưu đãi độc quyền từ Thảo Dược Bà Thông.
           </p>
           <NewsletterForm />

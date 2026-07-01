@@ -21,7 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/${product.slug}`} className="group">
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-neutral-100">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
         <Image
           src={image?.url ?? PLACEHOLDER_IMAGE}
           alt={image?.alt ?? product.name}
@@ -32,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {isOnSale && (
           <Badge
             variant="secondary"
-            className="absolute top-3 left-3 bg-white text-xs"
+            className="absolute top-3 left-3 bg-card text-xs"
           >
             Giảm giá
           </Badge>
