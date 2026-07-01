@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { AnnouncementBar } from "@/components/layout/announcement-bar"
 import { BackToTop } from "@/components/layout/back-to-top"
+import { ZaloWidget } from "@/components/layout/zalo-widget"
 
 export default function StoreLayout({
   children,
@@ -23,6 +24,7 @@ export default function StoreLayout({
       </main>
       <Footer />
       <BackToTop />
+      <ZaloWidget />
     </>
   )
 }
