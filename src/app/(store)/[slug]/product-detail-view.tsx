@@ -193,7 +193,10 @@ export function ProductDetailView({
           )}
 
           {/* CTA đặt hàng (Phase 1 — chưa có giỏ hàng/thanh toán online) */}
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <p className="mt-2 text-sm text-muted-foreground">
+            Được chọn lọc và chăm chút tỉ mỉ, gửi đến tận tay bạn.
+          </p>
+          <div className="mt-3 flex flex-col gap-3 sm:flex-row">
             <Button size="lg" className="w-full sm:flex-1" disabled={!inStock} asChild>
               <Link href="/contact">
                 {inStock ? "Liên hệ đặt hàng" : "Tạm hết hàng"}

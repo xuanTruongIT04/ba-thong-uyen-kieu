@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Dancing_Script } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 import { Toaster } from "sonner"
@@ -9,6 +9,13 @@ import "./globals.css"
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
+})
+
+// Dùng riêng cho chữ ký/trích dẫn của Giám đốc — không áp cho toàn site.
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  subsets: ["latin", "vietnamese"],
+  weight: ["600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -53,7 +60,10 @@ export default async function RootLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${dancingScript.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col bg-white">
         <script
           type="application/ld+json"

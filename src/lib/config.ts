@@ -10,10 +10,15 @@ export const siteConfig = {
   description:
     "Thảo Dược Bà Thông — thương hiệu chăm sóc sức khỏe và sắc đẹp từ thảo dược thiên nhiên Việt Nam. Sản phẩm an toàn, lành tính, kế thừa tinh hoa y học cổ truyền.",
 
-  // Chủ sở hữu
+  // Chủ sở hữu — quote/bio dùng cho khối "chữ ký" trên trang chủ/Giới thiệu/footer
   owner: {
     name: "Uyên Kiều",
     title: "Giám đốc",
+    quote:
+      "Tôi tin mỗi người phụ nữ Việt đều xứng đáng được chăm sóc bằng những gì tự nhiên và an toàn nhất — đó là lý do Bà Thông ra đời.",
+    bio: "Với tâm huyết gìn giữ và phát triển tinh hoa y học cổ truyền, Giám đốc Uyên Kiều trực tiếp đồng hành cùng đội ngũ Bà Thông trong từng công đoạn, từ chọn lọc dược liệu đến hoàn thiện sản phẩm.",
+    // Ảnh chân dung thật — cập nhật khi có. Để trống thì site hiển thị avatar chữ cái đầu.
+    photo: "",
   },
 
   // Thanh thông báo trên cùng (để "" nếu muốn ẩn)

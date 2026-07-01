@@ -29,6 +29,12 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               {siteConfig.tagline}
             </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Sáng lập &amp; điều hành bởi {siteConfig.owner.title}{" "}
+              <span className="font-signature text-lg text-primary">
+                {siteConfig.owner.name}
+              </span>
+            </p>
           </div>
 
           {/* Sản phẩm */}

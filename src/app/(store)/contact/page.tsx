@@ -7,10 +7,39 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { PageHeader } from "@/components/ui/page-header"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { toast } from "sonner"
 import { contactFormSchema } from "@/lib/validators"
 import { siteConfig } from "@/lib/config"
+
+const faqs = [
+  {
+    question: "Làm sao để đặt hàng?",
+    answer:
+      "Bạn có thể liên hệ trực tiếp qua hotline, Zalo, hoặc điền vào biểu mẫu bên dưới. Đội ngũ Bà Thông sẽ tư vấn sản phẩm phù hợp và xác nhận đơn hàng với bạn.",
+  },
+  {
+    question: "Sản phẩm có phù hợp với da/cơ địa nhạy cảm không?",
+    answer:
+      "Sản phẩm chiết xuất từ thảo dược thiên nhiên, được chăm chút để lành tính. Tuy vậy, mỗi cơ địa khác nhau, bạn nên thử trên vùng da nhỏ trước khi dùng toàn mặt/toàn thân, đặc biệt nếu có làn da nhạy cảm.",
+  },
+  {
+    question: "Chính sách đổi trả như thế nào?",
+    answer:
+      "Bà Thông hỗ trợ đổi trả trong vòng 30 ngày nếu sản phẩm gặp lỗi từ nhà sản xuất. Liên hệ hotline hoặc email để được hướng dẫn cụ thể.",
+  },
+  {
+    question: "Tôi có thể liên hệ qua những kênh nào?",
+    answer:
+      "Bạn có thể gọi hotline, nhắn Zalo, gửi email, hoặc nhắn tin qua Facebook của Bà Thông — đội ngũ luôn sẵn sàng hỗ trợ.",
+  },
+]
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false)
@@ -164,6 +193,23 @@ export default function ContactPage() {
             </form>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Câu hỏi thường gặp */}
+      <div className="mx-auto mt-16 max-w-3xl">
+        <h2 className="text-xl font-semibold">Câu hỏi thường gặp</h2>
+        <Accordion className="mt-6">
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger className="text-left">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   )

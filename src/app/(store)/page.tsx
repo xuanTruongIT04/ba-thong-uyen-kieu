@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/config"
 import { ProductGrid } from "@/components/products/product-grid"
 import { NewsletterForm } from "@/components/layout/newsletter-form"
+import { DirectorSignature } from "@/components/layout/director-signature"
 import { PLACEHOLDER_IMAGE } from "@/lib/constants"
 import { productRepository, categoryRepository } from "@/lib/repositories"
 
@@ -46,27 +47,43 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative flex h-[560px] items-center justify-center bg-muted">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-muted-foreground">
-            {siteConfig.tagline}
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            {siteConfig.name}
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground">
-            {siteConfig.description}
-          </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg" asChild>
-              <Link href="/shop">
-                Mua ngay
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/about">Câu chuyện thương hiệu</Link>
-            </Button>
+      <section className="relative overflow-hidden bg-muted">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-24 lg:px-8">
+          <div className="text-center lg:text-left">
+            <p className="mb-4 text-sm font-medium uppercase tracking-widest text-muted-foreground">
+              {siteConfig.tagline}
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              {siteConfig.name}
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground">
+              {siteConfig.description}
+            </p>
+            <p className="mt-4 text-base font-medium text-foreground">
+              Một hành trình chăm sóc bản thân, bắt đầu từ những điều tự nhiên nhất.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+              <Button size="lg" asChild>
+                <Link href="/shop">
+                  Mua ngay
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/about">Câu chuyện thương hiệu</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl shadow-lg lg:mx-0">
+            <Image
+              src="/images/products/dien-hong-nhan.jpg"
+              alt={`Sản phẩm ${siteConfig.name}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -136,6 +153,9 @@ export default async function HomePage() {
           <ProductGrid products={featuredProducts} />
         </div>
       </section>
+
+      {/* Thông điệp từ Giám đốc */}
+      <DirectorSignature />
 
       {/* Newsletter */}
       <section className="bg-foreground text-background">
